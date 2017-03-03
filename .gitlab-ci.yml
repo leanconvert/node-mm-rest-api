@@ -13,6 +13,6 @@ stages:
 test:
   stage: test
   script:
-    - npm test
+    - jest
   only:
     - master
