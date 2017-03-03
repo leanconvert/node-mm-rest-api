@@ -13,6 +13,6 @@ stages:
 test:
   stage: test
   script:
-    - jest
+    - node_modules/jest/bin/jest
   only:
     - master
