@@ -1,4 +1,8 @@
 const auth = require('../lib/auth');
+const request = require('superagent');
+const config = require('../mock/superagent-mock-config');
+const logger = (log) => console.log('superagent call', log);
+var superagent = require('superagent-mock')(request, config);
 
 describe('getTokenURL()', () => {
   it('Returns request URL to get access token', () => {
@@ -26,23 +30,35 @@ describe('getBasicToken()', () => {
 });
 
 describe('getAccessToken()', () => {
-  it('Returns Promise', () => {
+  it('Returns Bearer Access Token', () => {
     const credentials = {
       clientId: 'clientId',
       clientSecret: 'clientSecret',
       username: 'username',
       password: 'password'
     };
-
+    const expectedResult = 'eyJhbGciOiJSUzjFfb_FkJFoIdA';
     const promise = auth.getAccessToken('https://api-auth-eu.maxymiser.com', credentials);
 
-    // promise
-      // .then(result => {
-      //   console.log(result);
-      //   // expect(result).toEqual('Response goes here...');
-      // })
-      // .catch(err => {
-      //   console.log(err)
-      // });
+    return promise.then(result => {
+      expect(result).toBe(expectedResult);
+    });
+  });
+
+  it('Returns `invalid_grant` error if the `username` or `password` is missing', () => {
+    const credentials = {
+      clientId: 'clientId',
+      clientSecret: 'clientSecret'
+    };
+    const expectedResult = {
+      error: 'invalid_grant',
+      statusCode: 400,
+      message: 'Invalid resource owner credentials'
+    };
+    const promise = auth.getAccessToken('https://api-auth-eu.maxymiser.com', credentials);
+
+    return promise.catch(err => {
+      expect(err).toEqual(expectedResult);
+    });
   });
 });
