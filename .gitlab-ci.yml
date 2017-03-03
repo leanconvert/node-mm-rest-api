@@ -1,0 +1,7 @@
+image: node:latest
+
+test:
+  script:
+    - npm test
+  only:
+    - master
