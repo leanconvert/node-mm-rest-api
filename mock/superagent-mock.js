@@ -67,6 +67,32 @@ const responses = {
         }]
       }
     };
+  },
+
+  ['/campaigns']() {
+    return {
+      body: {
+        items: [{
+          'id': 'MDA4ODUx',
+          'name': 'T4_SG_Header_CTA',
+          'createdAt': '2014-06-20T07:45:15.0000000Z',
+          'updatedAt': '2016-04-19T11:18:45.0000000Z',
+          'createdBy': 'Maxymiser Team',
+          'state': 'Completed'
+        }]
+      }
+    };
+  },
+
+  ['/campaigns/:id']() {
+    return {
+      body: {
+        id: 'MzIxMzM',
+        name: 'www.test.com',
+        lastIterationPublishDate: '',
+        lastIterationPublishHash: ''
+      }
+    };
   }
 };
 
@@ -102,10 +128,18 @@ module.exports = [{
   get: function (match, data) {
     const path = match[1] || '';
 
-    switch (path) {
-      case 'https://api-eu.maxymiser.com/v1/sites':
-        return responses['/sites']();
+    if (path === 'https://api-eu.maxymiser.com/v1/sites') {
+      return responses['/sites']();
     }
+
+    if (path === 'https://api-eu.maxymiser.com/v1/sites/MzIxMzM') {
+      return responses['/campaigns/:id']();
+    }
+
+    if (/\/sites\/.+?\/sandbox\/campaigns$/.test(path)) {
+      return responses['/campaigns']();
+    }
+
   },
 
   /**
