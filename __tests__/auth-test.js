@@ -1,6 +1,6 @@
 const auth = require('../lib/auth');
 const request = require('superagent');
-const config = require('../mock/superagent-mock-config');
+const config = require('../mock/superagent-mock');
 const logger = (log) => console.log('superagent call', log);
 var superagent = require('superagent-mock')(request, config);
 
@@ -62,3 +62,52 @@ describe('getAccessToken()', () => {
     });
   });
 });
+
+describe('authorize()', () => {
+  it('returns a Promise with the authorization token', () => {
+    var token;
+    const authorize = auth.authorize(
+      token,
+      'https://api-auth-eu.maxymiser.com',
+      {
+        clientId: 'clientId',
+        clientSecret: 'clientSecret',
+        username: 'username',
+        password: 'password'
+      }
+    );
+    const expectedResult = 'eyJhbGciOiJSUzjFfb_FkJFoIdA';
+
+    return authorize().then(result => {
+      return expect(result).toBe(expectedResult);
+    });
+  });
+
+  it('re-authorizates if the token is invalid and returns a Promise with the authorization token', () => {
+    var token = auth.getAccessToken(
+      'https://api-auth-eu.maxymiser.com',
+      {
+        clientId: 'WrongClientId',
+        clientSecret: 'clientSecret',
+        username: 'username',
+        password: 'password'
+      }
+    );
+
+    const authorize = auth.authorize(
+      token,
+      'https://api-auth-eu.maxymiser.com',
+      {
+        clientId: 'clientId',
+        clientSecret: 'clientSecret',
+        username: 'username',
+        password: 'password'
+      }
+    );
+    const expectedResult = 'eyJhbGciOiJSUzjFfb_FkJFoIdA';
+
+    return authorize().then(result => {
+      return expect(result).toBe(expectedResult);
+    });
+  });
+})
