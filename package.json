@@ -11,8 +11,7 @@
   "dependencies": {
     "btoa": "^1.1.2",
     "superagent": "^3.4.4",
-    "superagent-mock": "^3.3.0",
-    "superagent-mocker": "^0.5.2"
+    "superagent-mock": "^3.3.0"
   },
   "devDependencies": {
     "jest": "^18.1.0"
