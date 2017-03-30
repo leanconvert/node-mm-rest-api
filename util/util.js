@@ -28,8 +28,8 @@ const getUpdatedData = (options) => {
  * @param  {string} name
  * @return {object}
  */
-const getByName(items, name) => {
-  return items.filter(item => item.name === name)[0]);
+const getByName = (items, name) => {
+  return items.filter(item => item.name === name)[0];
 }
 
 /**
