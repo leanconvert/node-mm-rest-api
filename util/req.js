@@ -1,3 +1,5 @@
+const superagent = require('superagent');
+
 module.exports = (authorize) => {
   const get = (path) => {
     return authorize()
