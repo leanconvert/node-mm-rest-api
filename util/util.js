@@ -40,7 +40,7 @@ const getByName = (items, name) => {
  * @return {string}
  */
 const getScriptPath = (basePath, siteId, scriptId) => {
-  return `${basePath}/sites/${site.id}/sandbox/scripts/${script.id}`;
+  return `${basePath}/sites/${siteId}/sandbox/scripts/${scriptId}`;
 }
 
 module.exports = {
