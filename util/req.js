@@ -19,6 +19,25 @@ module.exports = (authorize) => {
       });
   };
 
+  const post = (path, data) => {
+    return authorize()
+      .then(token => {
+        return new Promise((resolve, reject) => {
+          superagent
+            .post(path)
+            .send(data)
+            .set('Authorization', `Bearer ${token}`)
+            .end((err, res) => {
+              if (err) {
+                reject(err);
+              } else {
+                resolve(res.body);
+              }
+            });
+        });
+      });
+  };
+
   const put = (path, data) => {
     return authorize()
       .then(token => {
@@ -36,10 +55,11 @@ module.exports = (authorize) => {
             });
         });
       });
-  }
+  };
 
   return {
     get,
+    post,
     put
   }
-}
+};
