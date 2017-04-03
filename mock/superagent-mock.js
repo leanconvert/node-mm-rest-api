@@ -78,6 +78,50 @@ const responses = {
         }]
       }
     };
+  },
+
+  ['/sites/scripts']() {
+    return {
+      body: {
+        items: [
+          {
+            id: "NDMyNDMy",
+            name: "Script 1",
+            description: "My first script",
+            apiVersion: "CD API v.1.8",
+            content: "var pageViews = visitor.getData( 'Page viewed' );\nconsole.log( 'Number of page views: ' + pageViews);"
+          },
+          {
+            id: "NDMyNDQ0",
+            name: "Script 2",
+            apiVersion: "mmcore",
+            description: "My second script",
+            content: "console.log( 'test' );"
+          }
+        ]
+      }
+    }
+  },
+
+  ['/sites/actions']() {
+    return {
+      body: {
+        items: [
+          {
+            'id': 'NDMyNDMy',
+            'name': 'Action1',
+            'description': 'My first action',
+            'type': 'Click_through'
+          },
+          {
+            'id': 'NDMyNDQ0',
+            'name': 'Action2',
+            'description': 'My second action',
+            'type': 'Page_Impressions'
+          }
+        ]
+      }
+    }
   }
 };
 
@@ -111,14 +155,22 @@ module.exports = [{
    * @param data  mixed Data returns by `fixtures` attribute
    */
   get: function (match, data) {
-    const path = match[1] || '';
+    const path = (match[1] || '').replace('https://api-eu.maxymiser.com/v1/', '');
 
-    if (path === 'https://api-eu.maxymiser.com/v1/sites') {
+    if (path === 'sites') {
       return responses['/sites']();
     }
 
-    if (path === 'https://api-eu.maxymiser.com/v1/sites/MzIxMzM') {
+    if (path === 'sites/MzIxMzM') {
       return responses['/sites']({id: 'MzIxMzM'});
+    }
+
+    if (path === 'sites/MzIxMzM/sandbox/scripts/') {
+      return responses['/sites/scripts']();
+    }
+
+    if (path === 'sites/MzIxMzM/sandbox/actions') {
+      return responses['/sites/actions']();
     }
   },
 
