@@ -12,7 +12,7 @@ module.exports = (authorize) => {
               if (err) {
                 reject(err);
               } else {
-                resolve(res.body.items);
+                res.body.items ? resolve(res.body.items) : resolve(res.body);
               }
             });
         });
