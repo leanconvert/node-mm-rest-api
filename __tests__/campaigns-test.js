@@ -20,6 +20,7 @@ describe('campaigns.get()', () => {
     var c = campaigns(basePath, authorize);
     var expectedResult = [
       {
+        "siteId": "MzIxMzM",
         "id":"MDA2MjYx",
         "name":"Homepage Banner",
         "createdAt":"2016-03-17T17:20:34.408430Z",
@@ -28,6 +29,7 @@ describe('campaigns.get()', () => {
         "state":"Live"
       },
       {
+        "siteId": "MzIxMzM",
         "id":"MDA2MzM3",
         "name":"Nav Color",
         "createdAt":"2016-02-19T17:20:34.408430Z",
@@ -48,6 +50,7 @@ describe('campaigns.get()', () => {
     var c = campaigns(basePath, authorize);
     var expectedResult = [
       {
+        "siteId": "MzIxMzM",
         "id":"MDA2MjYx",
         "name":"Homepage Banner",
         "createdAt":"2016-03-17T17:20:34.408430Z",
@@ -56,6 +59,7 @@ describe('campaigns.get()', () => {
         "state":"Live"
       },
       {
+        "siteId": "MzIxMzM",
         "id":"MDA2MzM3",
         "name":"Nav Color",
         "createdAt":"2016-02-19T17:20:34.408430Z",
@@ -75,6 +79,7 @@ describe('campaigns.get()', () => {
     var authorize = auth.authorize(token, authPath, credentials);
     var c = campaigns(basePath, authorize);
     var expectedResult = {
+      "siteId": "MzIxMzM",
       "id":"MDA2MjYx",
       "name":"My campaign",
       "description":"",
