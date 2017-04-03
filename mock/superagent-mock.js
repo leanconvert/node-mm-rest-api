@@ -103,6 +103,18 @@ const responses = {
     }
   },
 
+  ['/sites/scripts/:id']() {
+    return {
+      body: {
+        'id': "MzIxMzM",
+        'name': "Script 1",
+        'description': "My first script",
+        'apiVersion': "CD API v.1.8",
+        'content': "console.log(123)"
+      }
+    }
+  },
+
   ['/sites/actions']() {
     return {
       body: {
@@ -194,6 +206,15 @@ module.exports = [{
     switch (path) {
       case 'https://api-auth-eu.maxymiser.com/oauth2/v1/tokens':
         return responses['/oauth2/v1/tokens'](data);
+    }
+  },
+
+  put: function (match, data) {
+    const path = match[1] || '';
+
+    switch (path) {
+      case 'https://api-eu.maxymiser.com/v1/sites/MzIxMzM/sandbox/scripts/NDMyNDMy':
+        return responses['/sites/scripts/:id']();
     }
   }
 }];
