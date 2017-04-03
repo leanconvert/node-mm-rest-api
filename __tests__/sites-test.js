@@ -124,6 +124,42 @@ describe('sites.scripts.get()', () => {
         expect(scripts).toEqual(expectedResult);
       });
   });
+
+  it('updates selected site script (by IDs)', () => {
+    var authorize = auth.authorize(token, authPath, credentials);
+    var s = sites(basePath, authorize);
+    var expectedResult = {
+      'id': "MzIxMzM",
+      'name': "Script 1",
+      'description': "My first script",
+      'apiVersion': "CD API v.1.8",
+      'content': "console.log(123)"
+    };
+
+    return s.scripts.update(
+      { siteId: 'MzIxMzM', scriptId: 'NDMyNDMy', content: 'console.log(123)' }
+    ).then(script => {
+      expect(script).toEqual(expectedResult);
+    });
+  });
+
+  it('updates selected site script (by Names)', () => {
+    var authorize = auth.authorize(token, authPath, credentials);
+    var s = sites(basePath, authorize);
+    var expectedResult = {
+      'id': "MzIxMzM",
+      'name': "Script 1",
+      'description': "My first script",
+      'apiVersion': "CD API v.1.8",
+      'content': "console.log(123)"
+    };
+
+    return s.scripts.update(
+      { siteName: 'www.test.com', scriptName: 'Script 1', content: 'console.log(123)' }
+    ).then(script => {
+      expect(script).toEqual(expectedResult);
+    });
+  });
 });
 
 describe('sites.actions.get()', () => {
