@@ -15,7 +15,7 @@ const getUpdatedData = (options) => {
     'elementName'
   ];
 
-  return options.filter(option => {
+  return Object.keys(options).filter(option => {
     return options[option] && !pathOptions.includes(option);
   }).reduce((obj, option) => {
     return obj[option] = options[option], obj;
