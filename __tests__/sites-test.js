@@ -58,10 +58,26 @@ describe('sites.get()', () => {
         expect(site).toEqual(expectedResult);
       })
   });
+
+  it('returns site by ID if ID and Name are both provided', () => {
+    var authorize = auth.authorize(token, authPath, credentials);
+    var s = sites(basePath, authorize);
+    var expectedResult = {
+      id: 'MzIxMzM',
+      name: 'www.test.com',
+      lastIterationPublishDate: '2017-02-13T10:32:28.0000000Z',
+      lastIterationPublishHash: 'LgK4w_RWUHeClDakSoE7tvjZk_M'
+    };
+
+    return s.get({siteId: 'MzIxMzM', siteName: 'www.test.com'})
+      .then(site => {
+        expect(site).toEqual(expectedResult);
+      })
+  });
 });
 
-// describe('sites.scripts.get()', () => {
-//   it('returns all site scripts', () => {
+describe('sites.scripts.get()', () => {
+  it('returns all site scripts if id/name is not provided', () => {
 
-//   });
-// });
+  });
+});
