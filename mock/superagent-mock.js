@@ -172,6 +172,7 @@ const responses = {
   ['/campaigns/create']() {
     return {
       body: {
+        "siteId": "MzIxMzM",
         "id":"MDA2MjYx",
         "name":"My campaign",
         "description":"",
@@ -181,6 +182,21 @@ const responses = {
         "state":"Implementation"
       }
     }
+  },
+
+  ['/elements']() {
+    return {
+      body: {
+        items: [{
+          "siteId": "MzIxMzM",
+          "campaignId": "MDA4ODUx",
+          "id": "MDMyMDU4",
+          "name": "A_Header",
+          "description": "",
+          "elementId": ""
+        }]
+      }
+    };
   }
 };
 
@@ -234,6 +250,10 @@ module.exports = [{
 
     if (path === 'sites/MzIxMzM/sandbox/campaigns') {
       return responses['/campaigns']();
+    }
+
+    if (path === 'sites/MzIxMzM/sandbox/campaigns/MDA2MjYx/elements') {
+      return responses['/elements']();
     }
   },
 
