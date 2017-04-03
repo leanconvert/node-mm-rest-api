@@ -142,6 +142,45 @@ const responses = {
         ]
       }
     }
+  },
+
+  ['/campaigns']() {
+    return {
+      body: {
+        items: [
+          {
+            "id":"MDA2MjYx",
+            "name":"Homepage Banner",
+            "createdAt":"2016-03-17T17:20:34.408430Z",
+            "updatedAt":"2016-03-17T17:25:22.408430Z",
+            "createdBy":"John Smith",
+            "state":"Live"
+          },
+          {
+            "id":"MDA2MzM3",
+            "name":"Nav Color",
+            "createdAt":"2016-02-19T17:20:34.408430Z",
+            "updatedAt":"2016-03-14T17:25:22.408430Z",
+            "createdBy":"Jason White",
+            "state":"Implementing"
+          }
+        ]
+      }
+    };
+  },
+
+  ['/campaigns/create']() {
+    return {
+      body: {
+        "id":"MDA2MjYx",
+        "name":"My campaign",
+        "description":"",
+        "createdAt":"2016-03-17T17:20:34.408430Z",
+        "updatedAt":"2016-03-17T17:25:22.408430Z",
+        "createdBy":"John Smith",
+        "state":"Implementation"
+      }
+    }
   }
 };
 
@@ -192,6 +231,10 @@ module.exports = [{
     if (path === 'sites/MzIxMzM/sandbox/actions') {
       return responses['/sites/actions']();
     }
+
+    if (path === 'sites/MzIxMzM/sandbox/campaigns') {
+      return responses['/campaigns']();
+    }
   },
 
   /**
@@ -206,6 +249,8 @@ module.exports = [{
     switch (path) {
       case 'https://api-auth-eu.maxymiser.com/oauth2/v1/tokens':
         return responses['/oauth2/v1/tokens'](data);
+      case 'https://api-eu.maxymiser.com/v1/sites/MzIxMzM/sandbox/campaigns':
+        return responses['/campaigns/create']();
     }
   },
 
