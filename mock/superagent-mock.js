@@ -55,7 +55,18 @@ const responses = {
     }
   },
 
-  ['/sites']() {
+  ['/sites'](data) {
+    if (data && data.id) {
+      return {
+        body: {
+          id: 'MzIxMzM',
+          name: 'www.test.com',
+          lastIterationPublishDate: '2017-02-13T10:32:28.0000000Z',
+          lastIterationPublishHash: 'LgK4w_RWUHeClDakSoE7tvjZk_M'
+        }
+      }
+    }
+
     return {
       body: {
         items: [{
@@ -65,32 +76,6 @@ const responses = {
           id: 'MzIxMzI=',
           name: 'm.test.com'
         }]
-      }
-    };
-  },
-
-  ['/campaigns']() {
-    return {
-      body: {
-        items: [{
-          'id': 'MDA4ODUx',
-          'name': 'T4_SG_Header_CTA',
-          'createdAt': '2014-06-20T07:45:15.0000000Z',
-          'updatedAt': '2016-04-19T11:18:45.0000000Z',
-          'createdBy': 'Maxymiser Team',
-          'state': 'Completed'
-        }]
-      }
-    };
-  },
-
-  ['/campaigns/:id']() {
-    return {
-      body: {
-        id: 'MzIxMzM',
-        name: 'www.test.com',
-        lastIterationPublishDate: '',
-        lastIterationPublishHash: ''
       }
     };
   }
@@ -133,13 +118,8 @@ module.exports = [{
     }
 
     if (path === 'https://api-eu.maxymiser.com/v1/sites/MzIxMzM') {
-      return responses['/campaigns/:id']();
+      return responses['/sites']({id: 'MzIxMzM'});
     }
-
-    if (/\/sites\/.+?\/sandbox\/campaigns$/.test(path)) {
-      return responses['/campaigns']();
-    }
-
   },
 
   /**
