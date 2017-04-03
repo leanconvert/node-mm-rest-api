@@ -23,13 +23,23 @@ const getUpdatedData = (options) => {
 }
 
 /**
- * Filter items to get one buy given name
+ * Filter items to get one by given name
  * @param  {array} items
  * @param  {string} name
  * @return {object}
  */
 const getByName = (items, name) => {
   return items.filter(item => item.name === name)[0];
+}
+
+/**
+ * Filter items to get one by given ID
+ * @param  {array} items
+ * @param  {string} id
+ * @return {object}
+ */
+const getById = (items, id) => {
+  return items.filter(item => item.id === id)[0];
 }
 
 /**
@@ -46,5 +56,6 @@ const getScriptPath = (basePath, siteId, scriptId) => {
 module.exports = {
   getUpdatedData,
   getByName,
+  getById,
   getScriptPath
 };
