@@ -142,6 +142,14 @@ describe('sites.actions.get()', () => {
         'name': 'Action2',
         'description': 'My second action',
         'type': 'Page_Impressions'
+      },
+      {
+        'id': 'NDQ0NDMy',
+        'name': 'Action3',
+        'description': 'My third action',
+        'type': 'Sales_Amount',
+        'currency': 'GBP',
+        'multiplier': 1
       }
     ];
 
@@ -166,6 +174,14 @@ describe('sites.actions.get()', () => {
         'name': 'Action2',
         'description': 'My second action',
         'type': 'Page_Impressions'
+      },
+      {
+        'id': 'NDQ0NDMy',
+        'name': 'Action3',
+        'description': 'My third action',
+        'type': 'Sales_Amount',
+        'currency': 'GBP',
+        'multiplier': 1
       }
     ];
 
