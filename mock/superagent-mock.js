@@ -103,7 +103,7 @@ const responses = {
     }
   },
 
-  ['/sites/scripts/:id']() {
+  ['/sites/scripts/create']() {
     return {
       body: {
         'id': "MzIxMzM",
@@ -197,6 +197,17 @@ const responses = {
         }]
       }
     };
+  },
+
+  ['/elements/create']() {
+    return {
+      body: {
+        "id":"NDMyNDQ0",
+        "name":"Element1",
+        "description":"My element",
+        "elementId":""
+      }
+    };
   }
 };
 
@@ -264,13 +275,17 @@ module.exports = [{
    * @param data  mixed Data returns by `fixtures` attribute
    */
   post: function (match, data) {
-    const path = match[1] || '';
+    const path = (match[1] || '')
+      .replace('https://api-eu.maxymiser.com/v1/', '')
+      .replace('https://api-auth-eu.maxymiser.com/oauth2/v1/', '');
 
     switch (path) {
-      case 'https://api-auth-eu.maxymiser.com/oauth2/v1/tokens':
+      case 'tokens':
         return responses['/oauth2/v1/tokens'](data);
-      case 'https://api-eu.maxymiser.com/v1/sites/MzIxMzM/sandbox/campaigns':
+      case 'sites/MzIxMzM/sandbox/campaigns':
         return responses['/campaigns/create']();
+      case 'sites/MzIxMzM/sandbox/campaigns/MDA2MjYx/elements':
+        return responses['/elements/create']();
     }
   },
 
@@ -279,7 +294,7 @@ module.exports = [{
 
     switch (path) {
       case 'https://api-eu.maxymiser.com/v1/sites/MzIxMzM/sandbox/scripts/NDMyNDMy':
-        return responses['/sites/scripts/:id']();
+        return responses['/sites/scripts/create']();
     }
   }
 }];
