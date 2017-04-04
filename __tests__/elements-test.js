@@ -19,6 +19,7 @@ describe('campaigns.elements.get()', () => {
     var authorize = auth.authorize(token, authPath, credentials);
     var e = elements(basePath, authorize);
     var expectedResult = [{
+      "siteId": "MzIxMzM",
       "campaignId": "MDA2MjYx",
       "id": "MDMyMDU4",
       "name": "A_Header",
