@@ -291,6 +291,19 @@ const responses = {
         ]
       }
     }
+  },
+
+  ['/variants/create']() {
+    return {
+      body: {
+        "id":"NDMyNDQ0",
+        "name":"Variant2",
+        "content":"<span>Search</search>",
+        "isDefault":false,
+        "isControl":true,
+        "weight":100
+      }
+    }
   }
 };
 
@@ -368,6 +381,8 @@ module.exports = [{
         return responses['/elements/create']();
       case 'sites/MzIxMzM/sandbox/campaigns/MDA2MjYx/scripts':
         return responses['/campaigns/scripts/create']();
+      case 'sites/MzIxMzM/sandbox/campaigns/MDA2MjYx/elements/MDMyMDU4/variants':
+        return responses['/variants/create']();
     }
   },
 
@@ -382,6 +397,8 @@ module.exports = [{
         return responses['/actions/update']();
       case 'sites/MzIxMzM/sandbox/campaigns/MDA2MjYx/scripts/NDMyNDMy':
         return responses['/campaigns/scripts/update']();
+      case 'sites/MzIxMzM/sandbox/campaigns/MDA2MjYx/elements/MDMyMDU4/variants/NDMyNDQ0':
+        return responses['/variants/create']();
     }
   }
 }];
