@@ -33,3 +33,20 @@ const api = MMRestApi({
   }
 });
 ```
+
+```
+api:
+
+{ host: 'https://api-eu.maxymiser.com',
+  version: '1.0.0',
+  apiVersion: 1,
+  basePath: 'https://api-eu.maxymiser.com/v1',
+  sites: { get: [Function] },
+  siteScripts: { get: [Function], update: [Function] },
+  siteActions: { get: [Function] },
+  campaigns: { get: [Function], create: [Function] },
+  elements: { get: [Function], create: [Function] },
+  variants: { get: [Function], create: [Function], update: [Function] },
+  campaignScripts: { get: [Function], create: [Function], update: [Function] },
+  campaignActions: { get: [Function], update: [Function] } }
+```
