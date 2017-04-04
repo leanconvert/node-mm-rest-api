@@ -95,3 +95,45 @@ describe('campaigns.get()', () => {
       });
   });
 });
+
+describe('campaigns.elements.get()', () => {
+  it('returns all campaign elements', () => {
+    var authorize = auth.authorize(token, authPath, credentials);
+    var c = campaigns(basePath, authorize);
+    var expectedResult = [{
+      "siteId": "MzIxMzM",
+      "campaignId": "MDA2MjYx",
+      "id": "MDMyMDU4",
+      "name": "A_Header",
+      "description": "",
+      "elementId": ""
+    }];
+
+    return c.elements.get({siteId: 'MzIxMzM', campaignId: 'MDA2MjYx'})
+      .then(elements => {
+        expect(elements).toEqual(expectedResult);
+      })
+  });
+});
+
+describe('campaigns.elements.create()', () => {
+  it('creates new element for the selected campaign (by site/campaign siteId/siteName)', () => {
+    var authorize = auth.authorize(token, authPath, credentials);
+    var c = campaigns(basePath, authorize);
+    var expectedResult = {
+      "id":"NDMyNDQ0",
+      "name":"Element1",
+      "description":"My element",
+      "elementId":""
+    };
+
+    return c.elements.create({
+      siteId: 'MzIxMzM',
+      campaignId: 'MDA2MjYx',
+      name: 'Element1',
+      description: 'My element'
+    }).then(elements => {
+      expect(elements).toEqual(expectedResult);
+    });
+  });
+});
