@@ -188,8 +188,6 @@ const responses = {
     return {
       body: {
         items: [{
-          "siteId": "MzIxMzM",
-          "campaignId": "MDA4ODUx",
           "id": "MDMyMDU4",
           "name": "A_Header",
           "description": "",
@@ -208,6 +206,32 @@ const responses = {
         "elementId":""
       }
     };
+  },
+
+  ['/actions']() {
+    return {
+      body: {
+        items: [{
+          "id":"NDMyNDMy",
+          "name":"Action1",
+          "description":"My first action",
+          "type":"ClickCounts",
+          "isPrimary":true
+        }]
+      }
+    };
+  },
+
+  ['/actions/update']() {
+    return {
+      body: {
+        "id":"NDMyNDMy",
+        "name":"Action1",
+        "description":"My first action",
+        "type":"ClickCounts",
+        "isPrimary":false
+      }
+    }
   }
 };
 
@@ -266,6 +290,10 @@ module.exports = [{
     if (path === 'sites/MzIxMzM/sandbox/campaigns/MDA2MjYx/elements') {
       return responses['/elements']();
     }
+
+    if (path === 'sites/MzIxMzM/sandbox/campaigns/MDA2MjYx/actions') {
+      return responses['/actions']();
+    }
   },
 
   /**
@@ -290,11 +318,14 @@ module.exports = [{
   },
 
   put: function (match, data) {
-    const path = match[1] || '';
+    const path = (match[1] || '')
+      .replace('https://api-eu.maxymiser.com/v1/', '');
 
     switch (path) {
-      case 'https://api-eu.maxymiser.com/v1/sites/MzIxMzM/sandbox/scripts/NDMyNDMy':
+      case 'sites/MzIxMzM/sandbox/scripts/NDMyNDMy':
         return responses['/sites/scripts/create']();
+      case 'sites/MzIxMzM/sandbox/campaigns/MDA2MjYx/actions/NDMyNDMy':
+        return responses['/actions/update']();
     }
   }
 }];
