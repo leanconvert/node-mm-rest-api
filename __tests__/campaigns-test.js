@@ -101,7 +101,6 @@ describe('campaigns.elements.get()', () => {
     var authorize = auth.authorize(token, authPath, credentials);
     var c = campaigns(basePath, authorize);
     var expectedResult = [{
-      "siteId": "MzIxMzM",
       "campaignId": "MDA2MjYx",
       "id": "MDMyMDU4",
       "name": "A_Header",
@@ -134,6 +133,70 @@ describe('campaigns.elements.create()', () => {
       description: 'My element'
     }).then(elements => {
       expect(elements).toEqual(expectedResult);
+    });
+  });
+});
+
+describe('campaigns.actions.get()', () => {
+  it('returns all campaign actions', () => {
+    var authorize = auth.authorize(token, authPath, credentials);
+    var c = campaigns(basePath, authorize);
+    var expectedResult = [{
+      "campaignId": "MDA2MjYx",
+      "id":"NDMyNDMy",
+      "name":"Action1",
+      "description":"My first action",
+      "type":"ClickCounts",
+      "isPrimary":true
+    }];
+
+    return c.actions.get({siteId: 'MzIxMzM', campaignId: 'MDA2MjYx'})
+      .then(actions => {
+        expect(actions).toEqual(expectedResult);
+      })
+  });
+});
+
+describe('campaigns.actions.update()', () => {
+  it('updates an action by ID for the selected campaign', () => {
+    var authorize = auth.authorize(token, authPath, credentials);
+    var c = campaigns(basePath, authorize);
+    var expectedResult = {
+      "id":"NDMyNDMy",
+      "name":"Action1",
+      "description":"My first action",
+      "type":"ClickCounts",
+      "isPrimary":false
+    };
+
+    return c.actions.update({
+      siteId: 'MzIxMzM',
+      campaignId: 'MDA2MjYx',
+      actionId: 'NDMyNDMy',
+      isPrimary: false
+    }).then(actions => {
+      expect(actions).toEqual(expectedResult);
+    });
+  });
+
+  it('updates an action by Name for the selected campaign', () => {
+    var authorize = auth.authorize(token, authPath, credentials);
+    var c = campaigns(basePath, authorize);
+    var expectedResult = {
+      "id":"NDMyNDMy",
+      "name":"Action1",
+      "description":"My first action",
+      "type":"ClickCounts",
+      "isPrimary":false
+    };
+
+    return c.actions.update({
+      siteId: 'MzIxMzM',
+      campaignId: 'MDA2MjYx',
+      actionName: 'Action1',
+      isPrimary: false
+    }).then(actions => {
+      expect(actions).toEqual(expectedResult);
     });
   });
 });
