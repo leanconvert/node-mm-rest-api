@@ -267,6 +267,30 @@ const responses = {
         "content":"console.log( 'test' );"
       }
     }
+  },
+
+  ['/variants']() {
+    return {
+      body: {
+        items: [
+          {
+            "id":"NDMyNDMy",
+            "name":"Default",
+            "isDefault":true,
+            "isControl":true,
+            "weight":100
+          },
+          {
+            "id":"NDMyNDQ0",
+            "name":"Variant2",
+            "content":"<span>Search</search>",
+            "isDefault":false,
+            "isControl":true,
+            "weight":100
+          }
+        ]
+      }
+    }
   }
 };
 
@@ -302,36 +326,25 @@ module.exports = [{
   get: function (match, data) {
     const path = (match[1] || '').replace('https://api-eu.maxymiser.com/v1/', '');
 
-    if (path === 'sites') {
-      return responses['/sites']();
-    }
-
-    if (path === 'sites/MzIxMzM') {
-      return responses['/sites']({id: 'MzIxMzM'});
-    }
-
-    if (path === 'sites/MzIxMzM/sandbox/scripts/') {
-      return responses['/sites/scripts']();
-    }
-
-    if (path === 'sites/MzIxMzM/sandbox/actions') {
-      return responses['/sites/actions']();
-    }
-
-    if (path === 'sites/MzIxMzM/sandbox/campaigns') {
-      return responses['/campaigns']();
-    }
-
-    if (path === 'sites/MzIxMzM/sandbox/campaigns/MDA2MjYx/elements') {
-      return responses['/elements']();
-    }
-
-    if (path === 'sites/MzIxMzM/sandbox/campaigns/MDA2MjYx/actions') {
-      return responses['/actions']();
-    }
-
-    if (path === 'sites/MzIxMzM/sandbox/campaigns/MDA2MjYx/scripts') {
-      return responses['/campaigns/scripts']();
+    switch(path) {
+      case 'sites':
+        return responses['/sites']();
+      case 'sites/MzIxMzM':
+        return responses['/sites']({id: 'MzIxMzM'});
+      case 'sites/MzIxMzM/sandbox/scripts/':
+        return responses['/sites/scripts']();
+      case 'sites/MzIxMzM/sandbox/actions':
+        return responses['/sites/actions']();
+      case 'sites/MzIxMzM/sandbox/campaigns':
+        return responses['/campaigns']();
+      case 'sites/MzIxMzM/sandbox/campaigns/MDA2MjYx/elements':
+        return responses['/elements']();
+      case 'sites/MzIxMzM/sandbox/campaigns/MDA2MjYx/actions':
+        return responses['/actions']();
+      case 'sites/MzIxMzM/sandbox/campaigns/MDA2MjYx/scripts':
+        return responses['/campaigns/scripts']();
+      case 'sites/MzIxMzM/sandbox/campaigns/MDA2MjYx/elements/MDMyMDU4/variants':
+        return responses['/variants']();
     }
   },
 
