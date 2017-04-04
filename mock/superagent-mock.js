@@ -232,6 +232,41 @@ const responses = {
         "isPrimary":false
       }
     }
+  },
+
+  ['/campaigns/scripts']() {
+    return {
+      body: {
+        "items":[{
+          "id":"NDMyNDMy",
+          "name":"Script 1",
+          "description":"My first script",
+          "content":"var pageViews = visitor.getData( 'Page viewed' );\nconsole.log( 'Number of page views: ' + pageViews);"
+        }]
+      }
+    };
+  },
+
+  ['/campaigns/scripts/create']() {
+    return {
+      body: {
+        "id":"NDMyNDQ0",
+        "name":"Rendering",
+        "description": "",
+        "content":"console.log( 'test' );"
+      }
+    }
+  },
+
+  ['/campaigns/scripts/update']() {
+    return {
+      body: {
+        "id":"NDMyNDMy",
+        "name":"Script 1",
+        "description": "My first script",
+        "content":"console.log( 'test' );"
+      }
+    }
   }
 };
 
@@ -294,6 +329,10 @@ module.exports = [{
     if (path === 'sites/MzIxMzM/sandbox/campaigns/MDA2MjYx/actions') {
       return responses['/actions']();
     }
+
+    if (path === 'sites/MzIxMzM/sandbox/campaigns/MDA2MjYx/scripts') {
+      return responses['/campaigns/scripts']();
+    }
   },
 
   /**
@@ -314,6 +353,8 @@ module.exports = [{
         return responses['/campaigns/create']();
       case 'sites/MzIxMzM/sandbox/campaigns/MDA2MjYx/elements':
         return responses['/elements/create']();
+      case 'sites/MzIxMzM/sandbox/campaigns/MDA2MjYx/scripts':
+        return responses['/campaigns/scripts/create']();
     }
   },
 
@@ -326,6 +367,8 @@ module.exports = [{
         return responses['/sites/scripts/create']();
       case 'sites/MzIxMzM/sandbox/campaigns/MDA2MjYx/actions/NDMyNDMy':
         return responses['/actions/update']();
+      case 'sites/MzIxMzM/sandbox/campaigns/MDA2MjYx/scripts/NDMyNDMy':
+        return responses['/campaigns/scripts/update']();
     }
   }
 }];
