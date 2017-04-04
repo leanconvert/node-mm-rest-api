@@ -13,7 +13,7 @@
   "keywords": "Oracle, Maxymiser, REST API",
   "dependencies": {
     "btoa": "^1.1.2",
-    "superagent": "^3.4.4",
+    "superagent": "^3.4.4"
   },
   "devDependencies": {
     "jest": "^18.1.0",
