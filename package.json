@@ -1,20 +1,23 @@
 {
   "name": "node-mm-rest-api",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Nodejs wrapper for Oracle Maxymiser REST API",
+  "main": "lib/index.js",
+  "private": true,
   "scripts": {
     "test": "jest --watch",
     "coverage": "jest --coverage"
   },
   "author": "vitaliy@lenaconvert.com",
   "license": "MIT",
+  "keywords": "Oracle, Maxymiser, REST API",
   "dependencies": {
     "btoa": "^1.1.2",
     "superagent": "^3.4.4",
-    "superagent-mock": "^3.3.0"
   },
   "devDependencies": {
-    "jest": "^18.1.0"
+    "jest": "^18.1.0",
+    "webpack": "^2.3.3",
+    "superagent-mock": "^3.3.0"
   }
 }
