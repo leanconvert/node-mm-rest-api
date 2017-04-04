@@ -33,3 +33,25 @@ describe('elements.get()', () => {
       })
   });
 });
+
+describe('elements.create()', () => {
+  it('creates new element for the selected campaign (by site/campaign siteId/siteName)', () => {
+    var authorize = auth.authorize(token, authPath, credentials);
+    var e = elements(basePath, authorize);
+    var expectedResult = {
+      "id":"NDMyNDQ0",
+      "name":"Element1",
+      "description":"My element",
+      "elementId":""
+    };
+
+    return e.create({
+      siteId: 'MzIxMzM',
+      campaignId: 'MDA2MjYx',
+      name: 'Element1',
+      description: 'My element'
+    }).then(elements => {
+      expect(elements).toEqual(expectedResult);
+    });
+  });
+});
