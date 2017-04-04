@@ -17,7 +17,6 @@
   },
   "devDependencies": {
     "jest": "^18.1.0",
-    "webpack": "^2.3.3",
     "superagent-mock": "^3.3.0"
   }
 }
