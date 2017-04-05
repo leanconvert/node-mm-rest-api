@@ -2,7 +2,14 @@
 
 Node.js wrapper for the Oracle Maxymiser REST API
 
-## Install
++ [Install](#install)
++ [Instantiate](#instantiate)
++ [Site Settings](#site-settings)
+    + [Read Sites](#read-sites)
+    + [Read Scripts](#read-scripts)
+    + [Read Actions](#read-actionss)
+
+# Install
 
 SSH:
 
@@ -16,7 +23,7 @@ HTTPS:
 npm i https://gitlab.com/LeanConvert/node-mm-rest-api --save
 ```
 
-## Instantiate
+# Instantiate
 
 ```javascript
 const MMRestApi = require('node-mm-rest-api');
@@ -34,19 +41,37 @@ const api = MMRestApi({
 });
 ```
 
-## Site Settings
+# Site Settings
 
 > [http://docs.oracle.com/cloud/latest/marketingcs_gs/OMCGF/api-Site%20Settings.html](http://docs.oracle.com/cloud/latest/marketingcs_gs/OMCGF/api-Site%20Settings.html)
 
-### Read Sites
+## Read Sites
 
 > [http://docs.oracle.com/cloud/latest/marketingcs_gs/OMCGF/op-sites-get.html](http://docs.oracle.com/cloud/latest/marketingcs_gs/OMCGF/op-sites-get.html)
 
-#### Get All Sites
+### Get all sites
 
 ```javascript
-sites.get()
+api.sites.get()
   .then(sites => {
     console.log(sites);
+  });
+```
+
+### Get site by Name
+
+```javascript
+api.sites.get({siteName: 'MzIxMzM'})
+  .then(site => {
+    console.log(site);
+  });
+```
+
+### Get site by ID
+
+```javascript
+api.sites.get({siteId: 'test.com'})
+  .then(site => {
+    console.log(site);
   });
 ```
