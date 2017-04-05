@@ -255,10 +255,10 @@ api.campaigns.variants.create({
   // campaignId: 'MDA2MjYx',
   // elementId: 'MDMyMDU4',
   name: 'Variant2',
-  content: "<span>Search</search>",
-  "isDefault":false,
-  "isControl":true,
-  "weight":100
+  content: '<span>Search</search>',
+  isDefault: false,
+  isControl: true,
+  weight: 100
 }).then(result {
   console.log(result);
 });
@@ -276,12 +276,12 @@ api.campaigns.variants.update({
   // siteId: 'MzIxMzM',
   // campaignId: 'MDA2MjYx',
   // elementId: 'MDMyMDU4',
-  "variantId": "KHFed4",
+  variantId: 'KHFed4',
   name: 'Variant2',
-  content: "<span>Search</search>",
-  "isDefault":false,
-  "isControl":true,
-  "weight":100
+  content: '<span>Search</search>',
+  isDefault: false,
+  isControl: true,
+  weight: 100
 }).then(result {
   console.log(result);
 });
@@ -316,9 +316,9 @@ api.campaigns.scripts.create({
   // siteId: 'MzIxMzM',
   // campaignId: 'MDA2MjYx',
   // elementId: 'MDMyMDU4',
-  "name":"Rendering",
-  "description": "",
-  "content":"console.log('test');"
+  name: 'renderer',
+  description: '',
+  content: 'console.log("test")';
 }).then(result {
   console.log(result);
 });
@@ -336,10 +336,10 @@ api.campaigns.scripts.update({
   // siteId: 'MzIxMzM',
   // campaignId: 'MDA2MjYx',
   // elementId: 'MDMyMDU4',
-  "scriptId": "asdfASD3",
-  "name":"Rendering",
-  "description": "",
-  "content":"console.log('test');"
+  scriptId: 'asdfASD3',
+  name: 'Rendering',
+  description: '',
+  content: 'console.log("test")';
 }).then(result {
   console.log(result);
 });
