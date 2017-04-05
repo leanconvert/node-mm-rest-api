@@ -10,7 +10,21 @@ Node.js wrapper for the Oracle Maxymiser REST API
     + [Read Sites](#read-sites)
     + [Read Scripts](#read-scripts)
     + [Update Script](#update script)
-    + [Read Actions](#read-actionss)
+    + [Read Actions](#read-actions)
++ [Campaign Settings](#campaign-settings)
+    + [Read Campaigns](#read-campaigns)
+    + [Create Campaign](#create-element)
+    + [Read Elements](#read-elements)
+    + [Create Element](#create-element)
+    + [Read Variants](#read-variants)
+    + [Create Variant](#create-variant)
+    + [Update Variant](#update-variant)
+    + [Read Scripts](#read-scripts)
+    + [Create Script](#create-script)
+    + [Update Script](#update-script)
+    + [Read Actions](#read-actions)
+    + [Update Action](#update-action)
++ [Publishing](#publishing)
 
 # Install
 
