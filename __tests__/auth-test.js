@@ -6,14 +6,14 @@ var superagent = require('superagent-mock')(request, config);
 
 describe('getTokenURL()', () => {
   it('Returns request URL to get access token', () => {
-    const token = auth.getTokenURL('https://api-auth-eu.maxymiser.com');
+    const token = auth.getTokenURL('https://api-auth-eu.maxymiser.com/oauth2/v1');
     const expectedResult = 'https://api-auth-eu.maxymiser.com/oauth2/v1/tokens';
 
     expect(token).toEqual(expectedResult);
   });
 
   it('Removes trailing /', () => {
-    const token = auth.getTokenURL('https://api-auth-eu.maxymiser.com//////////');
+    const token = auth.getTokenURL('https://api-auth-eu.maxymiser.com/oauth2/v1/////////');
     const expectedResult = 'https://api-auth-eu.maxymiser.com/oauth2/v1/tokens';
 
     expect(token).toEqual(expectedResult);
@@ -38,7 +38,7 @@ describe('getAccessToken()', () => {
       password: 'password'
     };
     const expectedResult = 'eyJhbGciOiJSUzjFfb_FkJFoIdA';
-    const promise = auth.getAccessToken('https://api-auth-eu.maxymiser.com', credentials);
+    const promise = auth.getAccessToken('https://api-auth-eu.maxymiser.com/oauth2/v1', credentials);
 
     return promise.then(result => {
       expect(result).toBe(expectedResult);
@@ -55,7 +55,7 @@ describe('getAccessToken()', () => {
       statusCode: 400,
       message: 'Invalid resource owner credentials'
     };
-    const promise = auth.getAccessToken('https://api-auth-eu.maxymiser.com', credentials);
+    const promise = auth.getAccessToken('https://api-auth-eu.maxymiser.com/oauth2/v1', credentials);
 
     return promise.catch(err => {
       expect(err).toEqual(expectedResult);
@@ -68,7 +68,7 @@ describe('authorize()', () => {
     var token;
     const authorize = auth.authorize(
       token,
-      'https://api-auth-eu.maxymiser.com',
+      'https://api-auth-eu.maxymiser.com/oauth2/v1',
       {
         clientId: 'clientId',
         clientSecret: 'clientSecret',
@@ -85,7 +85,7 @@ describe('authorize()', () => {
 
   it('re-authorizates if the token is invalid and returns a Promise with the authorization token', () => {
     var token = auth.getAccessToken(
-      'https://api-auth-eu.maxymiser.com',
+      'https://api-auth-eu.maxymiser.com/oauth2/v1',
       {
         clientId: 'WrongClientId',
         clientSecret: 'clientSecret',
@@ -96,7 +96,7 @@ describe('authorize()', () => {
 
     const authorize = auth.authorize(
       token,
-      'https://api-auth-eu.maxymiser.com',
+      'https://api-auth-eu.maxymiser.com/oauth2/v1',
       {
         clientId: 'clientId',
         clientSecret: 'clientSecret',
