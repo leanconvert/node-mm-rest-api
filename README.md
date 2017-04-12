@@ -9,7 +9,7 @@ Node.js wrapper for the [Oracle Maxymiser REST API](http://docs.oracle.com/cloud
 + [Site Settings](#site-settings)
     + [Read Sites](#read-sites)
     + [Read Scripts](#read-scripts)
-    + [Update Script](#update script)
+    + [Update Script](#update-script)
     + [Read Actions](#read-actions)
 + [Campaign Settings](#campaign-settings)
     + [Read Campaigns](#read-campaigns)
