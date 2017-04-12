@@ -423,7 +423,7 @@ api.campaigns.scripts.update({
   name: 'Action1',
   description: 'My first action',
   type: 'ClickCounts',
-  isPrimary: 'true
+  isPrimary: 'true'
 }).then(result {
   console.log(result);
 });
