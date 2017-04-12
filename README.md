@@ -1,6 +1,6 @@
 # node-mm-rest-api
 
-Node.js wrapper for the [Oracle Maxymiser REST API](http://docs.oracle.com/cloud/latest/marketingcs_gs/OMCGF/index.html)
+Node.js wrapper for the [Oracle Maxymiser REST API](http://docs.oracle.com/cloud/latest/marketingcs_gs/OMCGF/index.html).
 
 # Table Of Contents
 
