@@ -75,7 +75,7 @@ api.sites.get()
   });
 ```
 
-### Get site by Name
+### Get site by ID
 
 ```javascript
 api.sites.get({siteId: 'MzIxMzM'})
@@ -84,7 +84,7 @@ api.sites.get({siteId: 'MzIxMzM'})
   });
 ```
 
-### Get site by ID
+### Get site by Name
 
 ```javascript
 api.sites.get({siteName: 'test.com'})
