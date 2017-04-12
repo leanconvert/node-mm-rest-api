@@ -31,13 +31,13 @@ Node.js wrapper for the [Oracle Maxymiser REST API](http://docs.oracle.com/cloud
 SSH:
 
 ```
-npm i git+ssh://git@gitlab.com/LeanConvert/node-mm-rest-api --save
+npm i git+https://git@github.com/leanconvert/node-mm-rest-api.git --save
 ```
 
 HTTPS:
 
 ```
-npm i https://gitlab.com/LeanConvert/node-mm-rest-api --save
+npm i git+ssh://git@github.com/leanconvert/node-mm-rest-api.git --save
 ```
 
 # Instantiate
