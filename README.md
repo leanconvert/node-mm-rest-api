@@ -1,6 +1,6 @@
 # node-mm-rest-api
 
-Node.js wrapper for the Oracle Maxymiser REST API
+Node.js wrapper for the [Oracle Maxymiser REST API](http://docs.oracle.com/cloud/latest/marketingcs_gs/OMCGF/index.html).
 
 # Table Of Contents
 
@@ -130,6 +130,11 @@ api.sites.scripts.update({
 .then(result => {
   console.log(result);
 });
+
+api.publish({
+  siteId: 'MzIxMzM',
+  // siteName: 'test.com'
+});
 ```
 
 ### Update Script by ID
@@ -142,6 +147,11 @@ api.sites.scripts.update({
 })
 .then(result => {
   console.log(result);
+});
+
+api.publish({
+  siteId: 'MzIxMzM',
+  // siteName: 'test.com'
 });
 ```
 
@@ -158,6 +168,11 @@ api.sites.actions.update({
 })
 .then(actions => {
   console.log(actions);
+});
+
+api.publish({
+  siteId: 'MzIxMzM',
+  // siteName: 'test.com'
 });
 ```
 
@@ -190,7 +205,12 @@ api.campaigns.create({
   desciption: ''
 }).then(result => {
   console.log(result);
-})
+});
+
+api.publish({
+  siteId: 'MzIxMzM',
+  // siteName: 'test.com'
+});
 ```
 
 ## Read Elements
@@ -222,7 +242,12 @@ api.campaigns.elements.create({
   description: ''
 }).then(result => {
   console.log(result);
-})
+});
+
+api.publish({
+  siteId: 'MzIxMzM',
+  // siteName: 'test.com'
+});
 ```
 
 ## Read Variants
@@ -262,6 +287,11 @@ api.campaigns.variants.create({
 }).then(result {
   console.log(result);
 });
+
+api.publish({
+  siteId: 'MzIxMzM',
+  // siteName: 'test.com'
+});
 ```
 
 ## Update Variant
@@ -284,6 +314,11 @@ api.campaigns.variants.update({
   weight: 100
 }).then(result {
   console.log(result);
+});
+
+api.publish({
+  siteId: 'MzIxMzM',
+  // siteName: 'test.com'
 });
 ```
 
@@ -322,6 +357,11 @@ api.campaigns.scripts.create({
 }).then(result {
   console.log(result);
 });
+
+api.publish({
+  siteId: 'MzIxMzM',
+  // siteName: 'test.com'
+});
 ```
 
 ## Update Script
@@ -342,6 +382,11 @@ api.campaigns.scripts.update({
   content: 'console.log("test")';
 }).then(result {
   console.log(result);
+});
+
+api.publish({
+  siteId: 'MzIxMzM',
+  // siteName: 'test.com'
 });
 ```
 
@@ -382,9 +427,16 @@ api.campaigns.scripts.update({
 }).then(result {
   console.log(result);
 });
+
+api.publish({
+  siteId: 'MzIxMzM',
+  // siteName: 'test.com'
+});
 ```
 
 # Publishing
+
+Every time you create/update Site or Campaign object using the [Oracle Maxymiser REST API](http://docs.oracle.com/cloud/latest/marketingcs_gs/OMCGF/index.html) the data is only being stored in the database. To apply the data to the Sandbox you need to make a **publish** request in addition.
 
 > http://docs.oracle.com/cloud/latest/marketingcs_gs/OMCGF/op-sites-%7Bsite-id%7D-sandbox-publish-put.html
 
