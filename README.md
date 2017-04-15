@@ -42,6 +42,8 @@ npm i git+ssh://git@github.com/leanconvert/node-mm-rest-api.git --save
 
 # Instantiate
 
+> http://docs.oracle.com/cloud/latest/marketingcs_gs/OMCGF/OAuth2.html
+
 ```javascript
 const MMRestApi = require('node-mm-rest-api');
 const api = MMRestApi({
