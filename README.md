@@ -8,9 +8,9 @@ Node.js wrapper for the [Oracle Maxymiser REST API](http://docs.oracle.com/cloud
 + [Instantiate](#instantiate)
 + [Site Settings](#site-settings)
     + [Read Sites](#read-sites)
-    + [Read Scripts](#read-scripts)
-    + [Update Script](#update-script)
-    + [Read Actions](#read-actions)
+    + [Read Site Scripts](#read-site-scripts)
+    + [Update Site Script](#update-site-script)
+    + [Read Site Actions](#read-site-actions)
 + [Campaign Settings](#campaign-settings)
     + [Read Campaigns](#read-campaigns)
     + [Create Campaign](#create-element)
@@ -19,22 +19,22 @@ Node.js wrapper for the [Oracle Maxymiser REST API](http://docs.oracle.com/cloud
     + [Read Variants](#read-variants)
     + [Create Variant](#create-variant)
     + [Update Variant](#update-variant)
-    + [Read Scripts](#read-scripts)
-    + [Create Script](#create-script)
-    + [Update Script](#update-script)
-    + [Read Actions](#read-actions)
-    + [Update Action](#update-action)
+    + [Read Campaign Scripts](#read-campaign-scripts)
+    + [Create Campaign Script](#create-campaign-script)
+    + [Update Campaign Script](#update-campaign-script)
+    + [Read Campaign Actions](#read-campaign-actions)
+    + [Update Campaign Action](#update-campaign-action)
 + [Publishing](#publishing)
 
 # Install
 
-SSH:
+HTTPS:
 
 ```
 npm i git+https://git@github.com/leanconvert/node-mm-rest-api.git --save
 ```
 
-HTTPS:
+SSH:
 
 ```
 npm i git+ssh://git@github.com/leanconvert/node-mm-rest-api.git --save
@@ -95,7 +95,7 @@ api.sites.get({siteName: 'test.com'})
   });
 ```
 
-## Read Scripts
+## Read Site Scripts
 
 > [http://docs.oracle.com/cloud/latest/marketingcs_gs/OMCGF/op-sites-%7Bsite-id%7D-%7Bconfiguration%7D-scripts-get.html](http://docs.oracle.com/cloud/latest/marketingcs_gs/OMCGF/op-sites-%7Bsite-id%7D-%7Bconfiguration%7D-scripts-get.html)
 
@@ -117,7 +117,7 @@ api.sites.scripts.get({siteName: 'test.com'})
   });
 ```
 
-## Update Script
+## Update Site Script
 
 > http://docs.oracle.com/cloud/latest/marketingcs_gs/OMCGF/op-sites-%7Bsite-id%7D-sandbox-scripts-%7Bscript-id%7D-put.html
 
@@ -157,7 +157,7 @@ api.publish({
 });
 ```
 
-## Read Actions
+## Read Site Actions
 
 > http://docs.oracle.com/cloud/latest/marketingcs_gs/OMCGF/op-sites-%7Bsite-id%7D-sandbox-campaigns-%7Bcampaign-id%7D-elements-%7Belement-id%7D-variants-%7Bvariant-id%7D-put.html
 
@@ -217,7 +217,7 @@ api.publish({
 
 ## Read Elements
 
-> http://docs.oracle.com/cloud/latest/marketingcs_gs/OMCGF/op-sites-%7Bsite-id%7D-sandbox-campaigns-%7Bcampaign-id%7D-elements-get.html
+> http://docs.oracle.com/cloud/latest/marketingcs_gs/OMCGF/op-sites-%7Bsite-id%7D-%7Bconfiguration%7D-campaigns-%7Bcampaign-id%7D-elements-get.html
 
 ```javascript
 api.campaigns.elements.get({
@@ -232,7 +232,7 @@ api.campaigns.elements.get({
 
 ## Create Element
 
-> http://docs.oracle.com/cloud/latest/marketingcs_gs/OMCGF/op-sites-%7Bsite-id%7D-sandbox-campaigns-%7Bcampaign-id%7D-elements-post.html
+> http://docs.oracle.com/cloud/latest/marketingcs_gs/OMCGF/op-sites-%7Bsite-id%7D-%7Bconfiguration%7D-campaigns-%7Bcampaign-id%7D-elements-post.html
 
 ```javascript
 api.campaigns.elements.create({
@@ -324,7 +324,7 @@ api.publish({
 });
 ```
 
-## Read Scripts
+## Read Campaign Scripts
 
 > http://docs.oracle.com/cloud/latest/marketingcs_gs/OMCGF/op-sites-%7Bsite-id%7D-%7Bconfiguration%7D-campaigns-%7Bcampaign-id%7D-scripts-get.html
 
@@ -341,7 +341,7 @@ api.campaigns.scripts.get({
 });
 ```
 
-## Create Script
+## Create Campaign Script
 
 > http://docs.oracle.com/cloud/latest/marketingcs_gs/OMCGF/op-sites-%7Bsite-id%7D-%7Bconfiguration%7D-campaigns-%7Bcampaign-id%7D-scripts-post.html
 
@@ -366,7 +366,7 @@ api.publish({
 });
 ```
 
-## Update Script
+## Update Campaign Script
 
 > http://docs.oracle.com/cloud/latest/marketingcs_gs/OMCGF/op-sites-%7Bsite-id%7D-sandbox-campaigns-%7Bcampaign-id%7D-scripts-%7Bscript-id%7D-put.html
 
@@ -392,7 +392,7 @@ api.publish({
 });
 ```
 
-## Read Actions
+## Read Campaign Actions
 
 > http://docs.oracle.com/cloud/latest/marketingcs_gs/OMCGF/op-sites-%7Bsite-id%7D-sandbox-campaigns-%7Bcampaign-id%7D-actions-get.html
 
@@ -409,7 +409,7 @@ api.campaigns.actions.get({
 });
 ```
 
-## Update Action
+## Update Campaign Action
 
 > http://docs.oracle.com/cloud/latest/marketingcs_gs/OMCGF/op-sites-%7Bsite-id%7D-sandbox-campaigns-%7Bcampaign-id%7D-actions-%7Baction-id%7D-put.html
 
