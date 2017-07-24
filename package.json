@@ -1,6 +1,6 @@
 {
   "name": "node-mm-rest-api",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Nodejs wrapper for Oracle Maxymiser REST API",
   "main": "lib/index.js",
   "private": true,
